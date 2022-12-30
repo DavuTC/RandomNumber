@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form onsubmit="return sayilariGetir()">
+      <label for="metin"
+        >1'den 99'a kadar olan sayıları for döngüsü ile yan yana</label
+      >
+      <input
+        type="submit"
+        value="Sırala"
+        id="sirala"
+        onclick="sayilariGetir()"
+      />
+      <br />
+      <br />
+      <input type="submit" value="Rastgele sayı seç" />
+      <br />
+      <br />
+      <span id="sonuc"></span>
+    </form>
+
+    <script>
+      function sayilariGetir() {
+        event.preventDefault();
+
+        let sonuc = "";
+        let randomNumber = Math.floor(Math.random() * 100);
+        console.log(randomNumber);
+
+        for (let i = 1; i <= 99; i++) {
+          if (i % 10 == 0) {
+            result = "<span style='color:blue;'>" + i + "</span>";
+            sonuc += i + "<br><br>";
+          } else if (i == randomNumber) {
+            result = "<span style='color:blue;'>" + i + "</span>";
+            continue;
+          } else sonuc += i + " ";
+        }
+        sonuc += result + " ";
+        document.getElementById("sirala").disabled = "true";
+        document.getElementById("sonuc").innerHTML = sonuc;
+      }
+    </script>
+  </body>
+</html>
